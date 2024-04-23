@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Editor</h1>
+        <input type="file" id="imageInput" accept=".png">
+        <div>
+            <label for="bgColor">Background Color:</label>
+            <input type="color" id="bgColor" value="#ffffff">
+        </div>
+        <button onclick="processImage()">Process Image</button>
+        <div class="output">
+            <h2>Result</h2>
+            <canvas id="resultCanvas" width="400" height="400"></canvas>
+            <a id="downloadLink" download="result.png" style="display: none;">Download Image</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

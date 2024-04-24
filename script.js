@@ -44,10 +44,9 @@ function processImage() {
             downloadLink.href = canvas.toDataURL('image/png');
             downloadLink.style.display = 'block';
 
-            // Create a preview image element
+            // Hide the preview image
             var previewImage = document.getElementById('previewImage');
-            previewImage.src = canvas.toDataURL('image/png');
-            previewImage.style.display = 'block';
+            previewImage.style.display = 'none';
         };
         image.src = event.target.result;
     };

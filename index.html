@@ -32,10 +32,6 @@
         h1, h2, h3, h4, h5, h6, p, li, input, button, label {
             font-weight: 600; /* Semi-bold */
         }
-        /* Add margin below the button */
-        button {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
@@ -63,7 +59,7 @@
         <button onclick="processImage()">Process Image</button>
         
         <!-- Processed Image Preview -->
-        <img id="processedImagePreview" src="#" alt="Processed Image Preview" style="max-width: 100%; display: none; margin-top: 20px;">
+        <img id="processedImagePreview" src="#" alt="Processed Image Preview" style="max-width: 100%; display: none;">
         
         <!-- Canvas to Display Result -->
         <canvas id="resultCanvas" width="400" height="400" style="display: none;"></canvas>

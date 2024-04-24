@@ -11,6 +11,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
 
 .guide {
@@ -20,10 +21,12 @@ body {
 
 .guide h2 {
     font-size: 24px;
+    text-align: center;
 }
 
 .guide ul {
     padding-left: 20px;
+    text-align: center;
 }
 
 /* Semi-Bold Text */

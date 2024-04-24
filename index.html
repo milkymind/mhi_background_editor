@@ -9,9 +9,9 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #9b0000; /* Set background color to #9b0000 */
+            background-color: #9b0000; /* Set background color to red */
             text-align: center; /* Center align text */
-            color: white; /* Set text color to white */
+            color: black; /* Set text color to white */
         }
         .container {
             max-width: 600px;
@@ -32,24 +32,6 @@
         h1, h2, h3, h4, h5, h6, p, li, input, button, label {
             font-weight: 600; /* Semi-bold */
         }
-        /* Style for Uploaded Image */
-        #uploadedImage {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1; /* Ensure image appears in front of background */
-        }
-        /* Style for Processed Image Canvas */
-        #resultCanvas {
-            max-width: 100%;
-            height: auto;
-            display: none;
-            margin: 20px auto;
-            position: relative;
-            z-index: 2; /* Ensure canvas appears in front of image */
-        }
     </style>
 </head>
 <body>
@@ -61,9 +43,9 @@
         <div class="guide">
             <h2>How to Use:</h2>
             <ul>
-                <li>Upload a 32x32 pixel PNG image.</li>
+                <li>Upload a 32x32 pixel PNG image (Save image from Magic Eden).</li>
                 <li>Choose a background color.</li>
-                <li>Click "Process Image" to scale the image to 400x400 pixels with the selected background.</li>
+                <li>Click "Process Image" to scale the image with the selected background.</li>
                 <li>Click "Download Image" to save the new image with the background.</li>
             </ul>
         </div>
@@ -75,9 +57,6 @@
         
         <!-- Button to Process Image -->
         <button onclick="processImage()">Process Image</button>
-        
-        <!-- Uploaded Image -->
-        <img id="uploadedImage" src="#" alt="Uploaded Image">
         
         <!-- Canvas to Display Result -->
         <canvas id="resultCanvas" width="400" height="400" style="display: none;"></canvas>

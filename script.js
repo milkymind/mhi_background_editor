@@ -1,19 +1,3 @@
-// Function to preview the uploaded image
-function previewImage(event) {
-    var input = event.target;
-    var reader = new FileReader();
-
-    reader.onload = function() {
-        var image = document.getElementById('imagePreview');
-        image.src = reader.result;
-        image.style.display = 'block'; // Show the image preview
-    }
-
-    if (input.files && input.files[0]) {
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
 // Function to process the uploaded image
 function processImage() {
     // Get the selected background color
@@ -34,7 +18,7 @@ function processImage() {
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Get the image preview
+    // Get the uploaded image
     var image = document.getElementById('imagePreview');
 
     // Draw the image on the canvas
@@ -47,4 +31,9 @@ function processImage() {
     var downloadLink = document.getElementById('downloadLink');
     downloadLink.href = canvas.toDataURL('image/png');
     downloadLink.style.display = 'block';
+
+    // Show the processed image preview
+    var processedImagePreview = document.getElementById('processedImagePreview');
+    processedImagePreview.src = canvas.toDataURL('image/png');
+    processedImagePreview.style.display = 'block';
 }

@@ -18,26 +18,38 @@ function processImage() {
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Get the uploaded image
-    var image = new Image();
-    image.onload = function() {
-        // Draw the uploaded image on top of the background
-        ctx.drawImage(image, 0, 0, 400, 400);
+    // Get the uploaded image file
+    var fileInput = document.getElementById('imageInput');
+    var uploadedImage = fileInput.files[0];
 
-        // Display the canvas
-        canvas.style.display = 'block';
+    if (!uploadedImage) {
+        alert('Please upload an image.');
+        return;
+    }
 
-        // Show the download link
-        var downloadLink = document.getElementById('downloadLink');
-        downloadLink.href = canvas.toDataURL('image/png');
-        downloadLink.style.display = 'block';
+    // Create a FileReader to read the uploaded image
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        // Create a new Image object with the uploaded image
+        var image = new Image();
+        image.onload = function() {
+            // Draw the uploaded image on top of the background
+            ctx.drawImage(image, 0, 0, 400, 400);
 
-        // Create a preview image element
-        var previewImage = document.getElementById('previewImage');
-        previewImage.src = canvas.toDataURL('image/png');
-        previewImage.style.display = 'block';
+            // Display the canvas
+            canvas.style.display = 'block';
+
+            // Show the download link
+            var downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = canvas.toDataURL('image/png');
+            downloadLink.style.display = 'block';
+
+            // Create a preview image element
+            var previewImage = document.getElementById('previewImage');
+            previewImage.src = canvas.toDataURL('image/png');
+            previewImage.style.display = 'block';
+        };
+        image.src = event.target.result;
     };
-
-    // Set the source of the image
-    image.src = 'pixelated.png'; // Replace 'pixelated.png' with the path to your 32x32 pixel image
+    reader.readAsDataURL(uploadedImage);
 }

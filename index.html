@@ -9,7 +9,9 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #9b0000; /* Set background color to #9b0000 */
+            background-image: url('background.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
             text-align: center; /* Center align text */
             color: black; /* Set text color to black */
         }
@@ -17,6 +19,10 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Background color for container */
+            border-radius: 10px;
+            position: relative; /* Make the container relative for absolute positioning */
+            z-index: 1; /* Ensure the container is above the background image */
         }
         .guide {
             margin-top: 40px;
@@ -37,9 +43,13 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1; /* Ensure image appears in front of background */
+            margin: 20px auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2; /* Ensure image appears in front of background */
         }
         /* Style for Processed Image Canvas */
         #resultCanvas {
@@ -47,8 +57,12 @@
             height: auto;
             display: none;
             margin: 20px auto;
-            position: relative;
-            z-index: 2; /* Ensure canvas appears in front of image */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3; /* Ensure canvas appears in front of image */
         }
     </style>
 </head>

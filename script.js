@@ -20,12 +20,8 @@ function processImage() {
 
     // Get the uploaded image
     var image = new Image();
-    image.src = 'pixelated.png'; // Replace 'pixelated.png' with the path to your 32x32 pixel image
-
-    // Draw the image on the canvas with nearest-neighbor interpolation
     image.onload = function() {
-        ctx.imageSmoothingEnabled = false;
-        ctx.mozImageSmoothingEnabled = false;
+        // Draw the uploaded image on top of the background
         ctx.drawImage(image, 0, 0, 400, 400);
 
         // Display the canvas
@@ -41,4 +37,7 @@ function processImage() {
         previewImage.src = canvas.toDataURL('image/png');
         previewImage.style.display = 'block';
     };
+
+    // Set the source of the image
+    image.src = 'pixelated.png'; // Replace 'pixelated.png' with the path to your 32x32 pixel image
 }

@@ -3,72 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHI Background Editor</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #9b0000; /* Set background color to red */
-            text-align: center; /* Center align text */
-            color: #000000; /* Set text color to black */
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .guide {
-            margin-top: 40px;
-            text-align: left;
-        }
-        .guide h2 {
-            font-size: 24px;
-        }
-        .guide ul {
-            padding-left: 20px;
-        }
-        /* Semi-Bold Text */
-        h1, h2, h3, h4, h5, h6, p, li, input, button, label {
-            font-weight: 600; /* Semi-bold */
-        }
-    </style>
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>MHI Background Editor</h1>
-        <p>Welcome to the MHI Background Editor!</p>
-        
-        <!-- Guide Section -->
-        <div class="guide">
-            <h2>How to Use:</h2>
-            <ul>
-                <li>Upload a 32x32 pixel PNG image (Save image from Magic Eden).</li>
-                <li>Choose a background color.</li>
-                <li>Click "Process Image" to scale the image with the selected background.</li>
-                <li>Click "Download Image" to save the new image with the background.</li>
-            </ul>
+        <h1>Mutant Hounds Background Editor</h1>
+        <input type="file" id="imageInput" accept=".png">
+        <div>
+            <label for="bgColor">Background Color:</label>
+            <input type="color" id="bgColor" value="#ffffff">
         </div>
-        
-        <!-- Image Input and Background Color Picker -->
-        <input type="file" id="imageInput" accept=".png"><br><br>
-        <label for="bgColor">Choose Background Color:</label>
-        <input type="color" id="bgColor" value="#ffffff"><br><br>
-        
-        <!-- Button to Process Image -->
         <button onclick="processImage()">Process Image</button>
-        
-        <!-- Processed Image Preview -->
-        <img id="previewImage" src="#" alt="Processed Image Preview" style="max-width: 100%; display: none; margin-top: 20px;">
-        
-        <!-- Canvas to Display Result -->
-        <canvas id="resultCanvas" width="400" height="400" style="display: none;"></canvas>
-        
-        <!-- Download Link for Image -->
-        <a id="downloadLink" href="#" download="result.png" style="display: none;">Download Image</a>
+        <div class="output">
+            <h2>Result</h2>
+            <canvas id="resultCanvas" width="400" height="400"></canvas>
+            <a id="downloadLink" download="result.png" style="display: none;">Download Image</a>
+        </div>
     </div>
-    
-    <!-- JavaScript -->
+
     <script src="script.js"></script>
 </body>
 </html>

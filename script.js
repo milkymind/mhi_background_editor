@@ -1,54 +1,49 @@
-// Function to process the uploaded image
 function processImage() {
-    // Get the selected background color
-    var bgColor = document.getElementById('bgColor').value;
+    const input = document.getElementById('imageInput');
+    const bgColor = document.getElementById('bgColor').value;
+    const canvas = document.getElementById('resultCanvas');
+    const downloadLink = document.getElementById('downloadLink');
 
-    // Get the canvas and context
-    var canvas = document.getElementById('resultCanvas');
-    var ctx = canvas.getContext('2d');
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
 
-    // Set canvas size
-    canvas.width = 400;
-    canvas.height = 400;
+        reader.onload = function (e) {
+            const img = new Image();
+            img.src = e.target.result;
 
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+            img.onload = function () {
+                const tmpCanvas = document.createElement('canvas');
+                const tmpCtx = tmpCanvas.getContext('2d');
 
-    // Draw the background color
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                // Set the temporary canvas size to the desired output size
+                tmpCanvas.width = 400;
+                tmpCanvas.height = 400;
 
-    // Get the uploaded image file
-    var fileInput = document.getElementById('imageInput');
-    var uploadedImage = fileInput.files[0];
+                // Disable image smoothing for pixel art
+                tmpCtx.imageSmoothingEnabled = false;
+                tmpCtx.webkitImageSmoothingEnabled = false;
+                tmpCtx.mozImageSmoothingEnabled = false;
 
-    if (!uploadedImage) {
-        alert('Please upload an image.');
-        return;
-    }
+                // Draw image on the temporary canvas using nearest neighbor
+                tmpCtx.drawImage(img, 0, 0, 32, 32, 0, 0, 400, 400);
 
-    // Create a FileReader to read the uploaded image
-    var reader = new FileReader();
-    reader.onload = function(event) {
-        // Create a new Image object with the uploaded image
-        var image = new Image();
-        image.onload = function() {
-            // Draw the uploaded image on top of the background
-            ctx.drawImage(image, 0, 0, 400, 400);
+                // Clear main canvas
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Display the canvas
-            canvas.style.display = 'block';
+                // Draw background color as a rectangle
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Show the download link
-            var downloadLink = document.getElementById('downloadLink');
-            downloadLink.href = canvas.toDataURL('image/png');
-            downloadLink.style.display = 'block';
+                // Draw scaled image from temporary canvas to main canvas
+                ctx.drawImage(tmpCanvas, 0, 0);
 
-            // Hide the preview image
-            var previewImage = document.getElementById('previewImage');
-            previewImage.style.display = 'none';
+                // Show download link
+                downloadLink.href = canvas.toDataURL('image/png');
+                downloadLink.style.display = 'inline';
+            };
         };
-        image.src = event.target.result;
-    };
-    reader.readAsDataURL(uploadedImage);
+
+        reader.readAsDataURL(input.files[0]);
+    }
 }

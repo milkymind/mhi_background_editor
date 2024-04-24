@@ -50,16 +50,16 @@
             </ul>
         </div>
         
-        <!-- Image Preview -->
-        <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 100%; display: none;">
-        
         <!-- Image Input and Background Color Picker -->
-        <input type="file" id="imageInput" accept=".png" onchange="previewImage(event)"><br><br>
+        <input type="file" id="imageInput" accept=".png"><br><br>
         <label for="bgColor">Choose Background Color:</label>
         <input type="color" id="bgColor" value="#ffffff"><br><br>
         
         <!-- Button to Process Image -->
         <button onclick="processImage()">Process Image</button>
+        
+        <!-- Processed Image Preview -->
+        <img id="previewImage" src="#" alt="Processed Image Preview" style="max-width: 100%; display: none; margin-top: 20px;">
         
         <!-- Canvas to Display Result -->
         <canvas id="resultCanvas" width="400" height="400" style="display: none;"></canvas>
@@ -71,4 +71,4 @@
     <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
-</
+</html>

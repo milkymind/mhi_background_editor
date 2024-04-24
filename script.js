@@ -27,18 +27,18 @@ function processImage() {
         ctx.imageSmoothingEnabled = false;
         ctx.mozImageSmoothingEnabled = false;
         ctx.drawImage(image, 0, 0, 400, 400);
+
+        // Display the canvas
+        canvas.style.display = 'block';
+
+        // Show the download link
+        var downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.style.display = 'block';
+
+        // Show the processed image preview
+        var processedImagePreview = document.getElementById('processedImagePreview');
+        processedImagePreview.src = canvas.toDataURL('image/png');
+        processedImagePreview.style.display = 'block';
     };
-
-    // Display the canvas
-    canvas.style.display = 'block';
-
-    // Show the download link
-    var downloadLink = document.getElementById('downloadLink');
-    downloadLink.href = canvas.toDataURL('image/png');
-    downloadLink.style.display = 'block';
-
-    // Show the processed image preview
-    var processedImagePreview = document.getElementById('processedImagePreview');
-    processedImagePreview.src = canvas.toDataURL('image/png');
-    processedImagePreview.style.display = 'block';
 }

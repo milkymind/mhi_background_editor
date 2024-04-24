@@ -22,6 +22,10 @@ function processImage() {
     var image = new Image();
     image.src = 'pixelated.png'; // Replace 'pixelated.png' with the path to your 32x32 pixel image
 
+    // Draw the background color
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     // Draw the image on the canvas with nearest-neighbor interpolation
     image.onload = function() {
         ctx.imageSmoothingEnabled = false;

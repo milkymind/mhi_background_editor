@@ -1,26 +1,32 @@
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    padding: 20px;
+    background-color: #9b0000; /* Set background color to red */
+    text-align: center; /* Center align text */
+    color: #000000; /* Set text color to black */
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
 }
 
-h1 {
-    text-align: center;
+.guide {
+    margin-top: 40px;
+    text-align: left;
 }
 
-input[type="color"] {
-    vertical-align: middle;
+.guide h2 {
+    font-size: 24px;
 }
 
-.output {
-    margin-top: 20px;
-    text-align: center;
+.guide ul {
+    padding-left: 20px;
 }
 
-canvas {
-    border: 1px solid #ccc;
+/* Semi-Bold Text */
+h1, h2, h3, h4, h5, h6, p, li, input, button, label {
+    font-weight: 600; /* Semi-bold */
 }

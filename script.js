@@ -19,10 +19,15 @@ function processImage() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Get the uploaded image
-    var image = document.getElementById('imagePreview');
+    var image = new Image();
+    image.src = 'pixelated.png'; // Replace 'pixelated.png' with the path to your 32x32 pixel image
 
-    // Draw the image on the canvas
-    ctx.drawImage(image, 0, 0, 400, 400);
+    // Draw the image on the canvas with nearest-neighbor interpolation
+    image.onload = function() {
+        ctx.imageSmoothingEnabled = false;
+        ctx.mozImageSmoothingEnabled = false;
+        ctx.drawImage(image, 0, 0, 400, 400);
+    };
 
     // Display the canvas
     canvas.style.display = 'block';
